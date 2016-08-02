@@ -1,0 +1,34 @@
+/**
+ * http://ignorethis.com
+ */
+
+a {
+  border: 0;
+}
+
+b { margin: 0; }
+
+h1 {
+  background: transparent url(http://wario.info/bg1.png);
+}
+
+h2 {
+  background: transparent url("http://wario.info/bg2.png");
+}
+
+h3 {
+  background-image: url('http://wario.info/bg2.png');
+}
+
+h4 {
+  font-face: url("http://wario.info/mustache.ttf")
+}
+
+@media screen {
+  h5 { cursor: url(http://wario.info.mustache.cur); }
+}
+
+/* http://ignorethistoo.com */
+body {
+  background: red url("https://mario.com/bg-red.png");
+}

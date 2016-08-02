@@ -1,0 +1,40 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "insecure": "http://www.wario.com/?x=5&y=6",
+        "secure": "https://www.mario.com/",
+        "also insecure": "http://www.wario.com/"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.0859375,
+              29.53522956294847
+            ],
+            [
+              -8.0859375,
+              52.908902047770255
+            ],
+            [
+              28.125,
+              52.908902047770255
+            ],
+            [
+              28.125,
+              29.53522956294847
+            ],
+            [
+              -8.0859375,
+              29.53522956294847
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
