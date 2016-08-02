@@ -1,5 +1,5 @@
 {
-  "name": "ssl-test",
+  "name": "insecurity",
   "version": "1.0.0",
   "description": "Test HTML, CSS, JS, etc. files for insecure URLs.",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/veltman/ssl-test.git"
+    "url": "git+https://github.com/veltman/insecurity.git"
   },
   "keywords": [
     "ssl",
@@ -20,9 +20,9 @@
   "author": "Noah Veltman (@veltman)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/veltman/ssl-test/issues"
+    "url": "https://github.com/veltman/insecurity/issues"
   },
-  "homepage": "https://github.com/veltman/ssl-test#readme",
+  "homepage": "https://github.com/veltman/insecurity#readme",
   "dependencies": {
     "cheerio": "^0.20.0",
     "css-parse": "^2.0.0",
