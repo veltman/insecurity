@@ -1,5 +1,7 @@
 # Insecurity
 
+[![Build Status](https://travis-ci.org/veltman/insecurity.svg?branch=master)](https://travis-ci.org/veltman/insecurity)
+
 Analyze HTML, CSS, JS, etc. files for insecure URLs (`http://`) that might cause [Mixed Content problems](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content#Mixed_passivedisplay_content) when serving a site over SSL.
 
 ## Installation
