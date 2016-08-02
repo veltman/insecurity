@@ -58,8 +58,8 @@ fs.readFile("something.html", "utf8", function(err, content){
       { tag: "link", url: "http://somethinginsecure.com/style.css" },
       { tag: "img", url: "http://somethinginsecure.com/image.png" },
       { tag: "script", url: "http://somethinginsecure.com/script.js" },
-      { tag: "style", url: "http://somethinginsecure.com/background-image.jpg", `property`: `background-image` },
-      { tag: "style", url: "http://somethinginsecure.com/Garamond.ttf", `property`: `font-face` }
+      { tag: "style", url: "http://somethinginsecure.com/background-image.jpg" },
+      { tag: "style", url: "http://somethinginsecure.com/Garamond.ttf" }
     ]
   */
 
