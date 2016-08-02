@@ -24,7 +24,7 @@ If the `scripts` option is set to true, it will also check the contents of any J
 
 `content` is the text content of an HTML document.
 
-Returns an array of insecure urls with a `tag`. URLs found inside `<style>` tags will also have a `property` name.
+Returns an array of insecure urls with a `tag`.
 
 ```js
 var fs = require("fs"),

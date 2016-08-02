@@ -22,7 +22,7 @@ module.exports = function(content, options) {
     selector += ", style";
   }
 
-  if (options.passive || true) {
+  if (options.passive) {
     selector += ", img, audio source, video source";
   }
 
@@ -41,6 +41,7 @@ module.exports = function(content, options) {
     if (tag === "style") {
       css($this.text(), { lineNumbers: false }).forEach(function(match){
         match.tag = "style";
+        delete match.property;
         warnings.push(match);
       });
     } else {

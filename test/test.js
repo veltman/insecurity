@@ -136,11 +136,49 @@ tape("HTML", function(test) {
 
   found = insecurity.html(html);
 
+  test.deepEqual(found, [
+    { url: "http://127.6.6.6/wario.css", tag: "link" },
+    { url: "http://www.wario.com/iframe", tag: "iframe" },
+    { url: "http://www.wario.com/test_files/script.js", tag: "script" }
+  ]);
+
   found = insecurity.html(html, { passive: true });
+
+  test.deepEqual(found, [
+    { url: "http://127.6.6.6/wario.css", tag: "link" },
+    { url: "http://www.wario.com/iframe", tag: "iframe" },
+    { url: "http://www.wario.com/thumbnail.jpg", tag: "img" },
+    { url: "http://wario.com/video.mp4", tag: "video" },
+    { url: "http://wario.com/video.wmv", tag: "video" },
+    { url: "http://wario.com/audio.mp3", tag: "audio" },
+    { url: "http://www.wario.com/footer.jpg", tag: "img" },
+    { url: "http://www.wario.com/test_files/script.js", tag: "script" }
+  ]);
 
   found = insecurity.html(html, { styles: true });
 
+  test.deepEqual(found, [
+    { url: "http://127.6.6.6/wario.css", tag: "link" },
+    { url: "http://www.wario.com/iframe", tag: "iframe" },
+    { url: "http://wario.info/bg1.png", tag: "style" },
+    { url: "http://wario.info/bg2.png", tag: "style" },
+    { url: "http://wario.info/bg2.png", tag: "style" },
+    { url: "http://wario.info/mustache.ttf", tag: "style" },
+    { url: "http://wario.info.mustache.cur", tag: "style" },
+    { url: "http://www.wario.com/test_files/script.js", tag: "script" }
+  ]);
+
+
   found = insecurity.html(html, { scripts: true });
+
+  test.deepEqual(found, [
+    { url: "http://127.6.6.6/wario.css", tag: "link" },
+    { url: "http://www.wario.com/iframe", tag: "iframe" },
+    { url: "http://www.wario.com/test_files/script.js", tag: "script" },
+    { url: "http://wario.info", tag: "script" },
+    { url: "http://wario.tv", tag: "script" },
+    { url: "http://127.6.6.6/wario", tag: "script" }
+  ]);
 
   test.end();
 
