@@ -20,13 +20,17 @@ Checks the `src` and `href` attributes of `<script>`, `<link>`, and `<iframe>` t
 
 If `passive` is set to true, it will also check the `src` attributes of `<img>`, `<audio>`, and `<video>` tags.
 
-If the `styles` options is set to true, it will also check the properties in the contents of `<style>` tags for insecure `url()` values.
+If the `styles` options is set to true, it will also check the properties in the inline contents of `<style>` tags for insecure `url()` values.
 
-If the `scripts` option is set to true, it will also check the contents of any JS `<script>` tags for string literals that include insecure URLs.
+If the `scripts` option is set to true, it will also check the inline contents of any JS `<script>` tags for string literals that include insecure URLs.
 
 `content` is the text content of an HTML document.
 
-Returns an array of insecure urls with a `tag` name.
+Returns an array of insecure urls with a `url` and a `tag` name.
+
+URLs found in the inline content of a `<script>` tag will also have `inline` set to `true`.
+
+URLs found in the inline content of a `<script>` tag will also have `inline` set to `true` and a `property` name.
 
 ```js
 var fs = require("fs"),
@@ -38,7 +42,8 @@ fs.readFile("something.html", "utf8", function(err, content){
 
   /*
     [
-      { tag: "link", url: "http://somethinginsecure.com/style.css" }
+      { tag: "link", url: "http://somethinginsecure.com/style.css" },
+      { tag: "script", url: "http://somethinginsecure.com/script.js" }
     ]
   */
 
@@ -47,6 +52,7 @@ fs.readFile("something.html", "utf8", function(err, content){
   /*
     [
       { tag: "link", url: "http://somethinginsecure.com/style.css" },
+      { tag: "script", url: "http://somethinginsecure.com/script.js" },
       { tag: "img", url: "http://somethinginsecure.com/image.png" }
     ]
   */
@@ -56,10 +62,11 @@ fs.readFile("something.html", "utf8", function(err, content){
   /*
     [
       { tag: "link", url: "http://somethinginsecure.com/style.css" },
-      { tag: "img", url: "http://somethinginsecure.com/image.png" },
       { tag: "script", url: "http://somethinginsecure.com/script.js" },
-      { tag: "style", url: "http://somethinginsecure.com/background-image.jpg" },
-      { tag: "style", url: "http://somethinginsecure.com/Garamond.ttf" }
+      { tag: "img", url: "http://somethinginsecure.com/image.png" },
+      { tag: "script", url: "http://somethinginsecure.com/inascript.html", inline: true },
+      { tag: "style", url: "http://somethinginsecure.com/background-image.jpg", inline: true, property: "background" },
+      { tag: "style", url: "http://somethinginsecure.com/Garamond.ttf", inline: true, property: "font-face" }
     ]
   */
 

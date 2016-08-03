@@ -41,7 +41,7 @@ module.exports = function(content, options) {
     if (tag === "style") {
       css($this.text(), { lineNumbers: false }).forEach(function(match){
         match.tag = "style";
-        delete match.property;
+        match.inline = true;
         warnings.push(match);
       });
     } else {
@@ -49,6 +49,7 @@ module.exports = function(content, options) {
       if (options.scripts && tag === "script" && (!$this.attr("type") || $this.attr("type") === "text/javascript")) {
         js($this.text(), { lineNumbers: false }).forEach(function(match){
           match.tag = "script";
+          match.inline = true;
           warnings.push(match);
         });
       }
