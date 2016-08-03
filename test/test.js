@@ -5,7 +5,9 @@ var tape = require("tape"),
 
 var html = fs.readFileSync(path.join(__dirname, "data/test.html"), "utf8"),
     js = fs.readFileSync(path.join(__dirname, "data/test.js"), "utf8"),
+    jsBroken = fs.readFileSync(path.join(__dirname, "data/test-broken.js"), "utf8"),
     css = fs.readFileSync(path.join(__dirname, "data/test.css"), "utf8"),
+    cssBroken = fs.readFileSync(path.join(__dirname, "data/test-broken.css"), "utf8"),
     csv = fs.readFileSync(path.join(__dirname, "data/test.csv"), "utf8"),
     json = fs.readFileSync(path.join(__dirname, "data/test.json"), "utf8");
 
@@ -61,6 +63,14 @@ tape("JS", function(test) {
   test.deepEqual(found, [
     { url: "http://wario.info" },
     { url: "http://wario.tv" }
+  ]);
+
+  test.throws(function(){ insecurity.js(jsBroken); });
+
+  found = insecurity.js(jsBroken, { silent: true });
+
+  test.deepEqual(found, [
+    { url: "http://wario.info", line: 4 }
   ]);
 
   test.end();
@@ -123,6 +133,18 @@ tape("CSS", function(test) {
     {
       url: "http://wario.info.mustache.cur",
       property: "cursor"
+    }
+  ]);
+
+  test.throws(function(){ insecurity.css(cssBroken); });
+
+  found = insecurity.css(cssBroken, { silent: true });
+
+  test.deepEqual(found, [
+    {
+      url: "http://wario.tv/bg.gif",
+      property: 'background-image',
+      line: 6
     }
   ]);
 
