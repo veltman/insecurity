@@ -82,6 +82,8 @@ Checks all `url()` values of CSS properties for insecure URLs.
 
 Returns an array of insecure urls with a `property`, a `url`, and a `line` number.  If the `lineNumbers` option is set to false, it will omit the `line` in the result.
 
+If the `silent` option is set to true, it will not throw parsing errors.
+
 ```js
 var fs = require("fs"),
     insecurity = require("insecurity");
@@ -107,6 +109,8 @@ Checks all strings in a piece of JavaScript for any insecure URL string literals
 `content` is the text content of a JS file.
 
 Returns an array of insecure urls with a a `url` and a `line` number.  If the `lineNumbers` option is set to false, it will omit the `line` in the result.
+
+If the `silent` option is set to true, it will not throw parsing errors.
 
 ```js
 var fs = require("fs"),

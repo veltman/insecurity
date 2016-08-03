@@ -4,7 +4,10 @@ var esprima = require("esprima"),
 
 module.exports = function(content, options) {
 
-  var nodes = esprima.tokenize(content, { loc: true }),
+  var nodes = esprima.tokenize(content,{
+        tolerant: !!options.silent,
+        loc: true
+      }),
       warnings = [];
 
   options = extend({ lineNumbers: true }, options);
