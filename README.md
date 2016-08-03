@@ -18,13 +18,15 @@ All methods return an array of insecure urls found (or an empty array, if none a
 
 Checks the `src` and `href` attributes of `<script>`, `<link>`, and `<iframe>` tags.
 
-If `passive` is set to true, it will also check the `src` attributes of `<img>`, `<audio>`, and `<video>` tags.
+`content` is the text content of an HTML document.
 
-If the `styles` options is set to true, it will also check the properties in the inline contents of `<style>` tags for insecure `url()` values.
+If the `passive` option is set to true, it will also check the `src` attributes of `<img>`, `<audio>`, and `<video>` tags.
+
+If the `styles` option is set to true, it will also check the properties in the inline contents of `<style>` tags for insecure `url()` values.
 
 If the `scripts` option is set to true, it will also check the inline contents of any JS `<script>` tags for string literals that include insecure URLs.
 
-`content` is the text content of an HTML document.
+You can also supply an array of strings and or regular expressions as a `whitelist` option. URLs that contain those strings or matches those expressions will be skipped.
 
 Returns an array of insecure urls with a `url` and a `tag` name.
 
@@ -82,6 +84,8 @@ Checks all `url()` values of CSS properties for insecure URLs.
 
 Returns an array of insecure urls with a `property`, a `url`, and a `line` number.  If the `lineNumbers` option is set to false, it will omit the `line` in the result.
 
+You can also supply an array of strings and or regular expressions as a `whitelist` option. URLs that contain those strings or matches those expressions will be skipped.
+
 If the `silent` option is set to true, it will not throw parsing errors.
 
 ```js
@@ -110,6 +114,8 @@ Checks all strings in a piece of JavaScript for any insecure URL string literals
 
 Returns an array of insecure urls with a a `url` and a `line` number.  If the `lineNumbers` option is set to false, it will omit the `line` in the result.
 
+You can also supply an array of strings and or regular expressions as a `whitelist` option. URLs that contain those strings or matches those expressions will be skipped.
+
 If the `silent` option is set to true, it will not throw parsing errors.
 
 ```js
@@ -137,6 +143,8 @@ Check any text for insecure URL substrings.
 `content` is the text content.
 
 Returns an array of insecure urls with a a `url` and a `line` number.  If the `lineNumbers` option is set to false, it will omit the `line` in the result.
+
+You can also supply an array of strings and or regular expressions as a `whitelist` option. URLs that contain those strings or matches those expressions will be skipped.
 
 ```js
 var fs = require("fs"),
