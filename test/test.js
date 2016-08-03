@@ -105,7 +105,7 @@ tape("CSS", function(test) {
       line: 24
     },
     {
-      url: "http://wario.info.mustache.cur",
+      url: "http://wario.info/mustache.cur",
       property: "cursor",
       line: 28
     }
@@ -131,7 +131,7 @@ tape("CSS", function(test) {
       property: "font-face"
     },
     {
-      url: "http://wario.info.mustache.cur",
+      url: "http://wario.info/mustache.cur",
       property: "cursor"
     }
   ]);
@@ -186,7 +186,7 @@ tape("HTML", function(test) {
     { url: "http://wario.info/bg2.png", tag: "style", property: "background", inline: true },
     { url: "http://wario.info/bg2.png", tag: "style", property: "background-image", inline: true },
     { url: "http://wario.info/mustache.ttf", tag: "style", property: "font-face", inline: true },
-    { url: "http://wario.info.mustache.cur", tag: "style", property: "cursor", inline: true },
+    { url: "http://wario.info/mustache.cur", tag: "style", property: "cursor", inline: true },
     { url: "http://www.wario.com/test_files/script.js", tag: "script" }
   ]);
 
@@ -200,6 +200,18 @@ tape("HTML", function(test) {
     { url: "http://wario.info", tag: "script", inline: true },
     { url: "http://wario.tv", tag: "script", inline: true },
     { url: "http://127.6.6.6/wario", tag: "script", inline: true }
+  ]);
+
+  found = insecurity.html(html, { scripts: true, whitelist: [ /wario/ ] });
+
+  test.deepEqual(found, []);
+
+  found = insecurity.html(html, { scripts: true, whitelist: [ /wario[.]tv/, "127.6.6.6", {} ] });
+
+  test.deepEqual(found, [
+    { url: "http://www.wario.com/iframe", tag: "iframe" },
+    { url: "http://www.wario.com/test_files/script.js", tag: "script" },
+    { url: "http://wario.info", tag: "script", inline: true }
   ]);
 
   test.end();
