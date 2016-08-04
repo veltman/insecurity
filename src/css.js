@@ -8,7 +8,7 @@ module.exports = function(content, options) {
 
   options = extend({ lineNumbers: true }, options);
 
-  traverse(parseCSS(content, { silent: !!options.silent }), function(node){
+  traverse(parseCSS(content, { silent: !!options.quiet }), function(node){
 
     var matches;
 

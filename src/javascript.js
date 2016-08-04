@@ -7,7 +7,7 @@ module.exports = function(content, options) {
   options = extend({ lineNumbers: true }, options);
 
   var nodes = esprima.tokenize(content,{
-        tolerant: !!options.silent,
+        tolerant: !!options.quiet,
         loc: true
       }),
       warnings = [];

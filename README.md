@@ -86,7 +86,7 @@ Returns an array of insecure urls with a `property`, a `url`, and a `line` numbe
 
 You can also supply an array of strings and or regular expressions as a `whitelist` option. URLs that contain those strings or matches those expressions will be skipped.
 
-If the `silent` option is set to true, it will not throw parsing errors.
+If the `quiet` option is set to true, it will not throw parsing errors.
 
 ```js
 var fs = require("fs"),
@@ -116,7 +116,7 @@ Returns an array of insecure urls with a a `url` and a `line` number.  If the `l
 
 You can also supply an array of strings and or regular expressions as a `whitelist` option. URLs that contain those strings or matches those expressions will be skipped.
 
-If the `silent` option is set to true, it will not throw parsing errors.
+If the `quiet` option is set to true, it will not throw parsing errors.
 
 ```js
 var fs = require("fs"),

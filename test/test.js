@@ -67,7 +67,7 @@ tape("JS", function(test) {
 
   test.throws(function(){ insecurity.js(jsBroken); });
 
-  found = insecurity.js(jsBroken, { silent: true });
+  found = insecurity.js(jsBroken, { quiet: true });
 
   test.deepEqual(found, [
     { url: "http://wario.info", line: 4 }
@@ -138,7 +138,7 @@ tape("CSS", function(test) {
 
   test.throws(function(){ insecurity.css(cssBroken); });
 
-  found = insecurity.css(cssBroken, { silent: true });
+  found = insecurity.css(cssBroken, { quiet: true });
 
   test.deepEqual(found, [
     {
