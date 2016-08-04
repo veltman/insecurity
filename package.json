@@ -1,6 +1,6 @@
 {
   "name": "insecurity",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Test HTML, CSS, JS, etc. files for insecure URLs.",
   "main": "index.js",
   "scripts": {

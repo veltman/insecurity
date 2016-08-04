@@ -206,6 +206,10 @@ tape("HTML", function(test) {
 
   test.deepEqual(found, []);
 
+  found = insecurity.html(html, { scripts: true, whitelist: /wario/ });
+
+  test.deepEqual(found, []);
+
   found = insecurity.html(html, { scripts: true, whitelist: [ /wario[.]tv/, "127.6.6.6", {} ] });
 
   test.deepEqual(found, [
@@ -213,6 +217,16 @@ tape("HTML", function(test) {
     { url: "http://www.wario.com/test_files/script.js", tag: "script" },
     { url: "http://wario.info", tag: "script", inline: true }
   ]);
+
+  found = insecurity.html(html, { scripts: true, whitelist: "127.6.6.6" });
+
+  test.deepEqual(found, [
+    { url: "http://www.wario.com/iframe", tag: "iframe" },
+    { url: "http://www.wario.com/test_files/script.js", tag: "script" },
+    { url: "http://wario.info", tag: "script", inline: true },
+    { url: "http://wario.tv", tag: "script", inline: true }
+  ]);
+
 
   test.end();
 

@@ -8,7 +8,11 @@ function wrapper(fn) {
 
     var warnings = fn(file, options);
 
-    if (options.whitelist && Array.isArray(options.whitelist)) {
+    if (options.whitelist && (typeof options.whitelist === "string" || options.whitelist instanceof RegExp)) {
+      options.whitelist = [options.whitelist];
+    }
+
+    if (options.whitelist) {
       warnings = warnings.filter(function(warning){
 
         return options.whitelist.every(function(wl){
